@@ -14,6 +14,7 @@ const Home = () => {
       if (error) {
         setFetchError("Could not fetch smoothies");
         setSmoothies(null);
+        console.log("Failing here");
         console.error(error);
       }
       if (data) {
@@ -25,7 +26,6 @@ const Home = () => {
     fetchSmoothies();
   }, []);
 
-
   return (
     <div className="page home">
       {fetchError && <p>{fetchError}</p>}
@@ -33,7 +33,15 @@ const Home = () => {
         <div className="smoothie">
           <div className="smoothie-grid">
             {smoothies.map((smoothie) => (
-              <SmoothieComp key={smoothie.id} smoothie={smoothie} />
+              <SmoothieComp
+                key={smoothie.id}
+                smoothie={smoothie}
+                onDelete={(id) =>
+                  setSmoothies((prev) =>
+                    prev ? prev.filter((s) => s.id !== id) : prev,
+                  )
+                }
+              />
             ))}
           </div>
         </div>

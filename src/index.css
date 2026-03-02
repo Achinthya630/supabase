@@ -91,3 +91,14 @@ form button {
   font-family: "Poppins";
   cursor: pointer;
 }
+
+
+.buttons{
+  text-align: end;
+  margin-top: 50px;
+  /* background-color: #cababa; */
+  /* width: 180px; */
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
